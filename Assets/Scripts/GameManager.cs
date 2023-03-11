@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : NetworkBehaviour
 {
@@ -19,6 +20,8 @@ public class GameManager : NetworkBehaviour
         WaitingToStart,
         GameOver
     }
+
+    [SerializeField] private Transform playerPrefab;
 
     private NetworkVariable<State> state = new NetworkVariable<State>(State.WaitingToStart);
 
@@ -56,6 +59,20 @@ public class GameManager : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         state.OnValueChanged += StateOnValueChanged;
+
+        if (IsServer)
+        {
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnLoadEventCompleted;
+        }
+    }
+
+    private void OnLoadEventCompleted(string scenename, LoadSceneMode loadscenemode, List<ulong> clientscompleted, List<ulong> clientstimedout)
+    {
+        foreach (var clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(playerPrefab);
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+        }
     }
 
     private void StateOnValueChanged(State previousvalue, State newvalue)
@@ -68,10 +85,6 @@ public class GameManager : NetworkBehaviour
         Instance = this;
         state.Value = State.WaitingToStart;
         playerReadyDictionary = new Dictionary<ulong, bool>();
-    }
-
-    private void Start()
-    {
     }
 
     private void Update()
@@ -95,5 +108,10 @@ public class GameManager : NetworkBehaviour
     public bool IsGamePlaying()
     {
         return state.Value == State.GamePlaying;
+    }
+
+    public bool IsWaitingToStart()
+    {
+        return state.Value == State.WaitingToStart;
     }
 }

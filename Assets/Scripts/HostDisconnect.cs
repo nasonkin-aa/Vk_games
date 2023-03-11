@@ -16,7 +16,7 @@ public class HostDisconnect : MonoBehaviour
     {
         if (clientId == NetworkManager.ServerClientId)
         {
-            SceneManager.LoadScene(0);
+            
         }
     }
 }
