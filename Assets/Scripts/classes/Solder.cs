@@ -1,5 +1,6 @@
 // Базовый класс солдата
-public class Solder: IDamageEntity
+using UnityEngine;
+public class Solder: MonoBehaviour, IDamageEntity
 {
     public int Damage { get; set; }
     

@@ -1,5 +1,7 @@
+using UnityEngine;
+
 // Базовый класс здания
-public class Building : IEntity
+public class Building : MonoBehaviour, IEntity
 {
     public int Hp {get; set;}
     
