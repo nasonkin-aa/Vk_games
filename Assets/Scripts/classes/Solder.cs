@@ -3,7 +3,7 @@ using UnityEngine;
 public class Solder: DamageEntity
 {
     // Скорость солдата
-    private int _speed = 10;
+    protected int _speed = 10;
 
     // RigidBody объекта
     private Rigidbody2D _rigidbody;
