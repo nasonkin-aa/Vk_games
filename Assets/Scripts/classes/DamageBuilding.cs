@@ -5,7 +5,6 @@ public class DamageBuilding: Building
 
     public DamageBuilding()
     {
-        hp = 10;
         damageEntity = new DamageEntity();
     }
 }
