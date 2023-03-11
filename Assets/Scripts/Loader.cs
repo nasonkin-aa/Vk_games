@@ -8,6 +8,7 @@ public class Loader : MonoBehaviour
 {
     public enum Scene
     {
+        DenchikMainMenu,
         DenchikMenu,
         DenchikGame,
         DenchikReady,
@@ -20,7 +21,7 @@ public class Loader : MonoBehaviour
     {
         Loader.targetScene = targetScene;
 
-        SceneManager.LoadScene(Scene.DenchikMenu.ToString());
+        SceneManager.LoadScene(Loader.targetScene.ToString());
     }
 
     public static void LoadNetwork(Scene targetScene)

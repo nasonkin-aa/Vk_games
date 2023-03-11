@@ -39,6 +39,7 @@ public class ReadyScript : NetworkBehaviour
         Debug.Log(allClientsReady);
         if (allClientsReady && NetworkManager.Singleton.ConnectedClientsIds.Count != 1)
         {
+            GameLobbyScript.Instance.DeleteLobby();
             Loader.LoadNetwork(Loader.Scene.DenchikGame);
         }
     }
