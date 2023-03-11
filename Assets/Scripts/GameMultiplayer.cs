@@ -20,6 +20,7 @@ public class GameMultiplayer : NetworkBehaviour
     
     public void StartHost()
     {
+        NetworkManager.Singleton.ConnectionApprovalCallback += ConnectionApprovalCallback;
         NetworkManager.Singleton.StartHost();
     }
 
@@ -44,8 +45,6 @@ public class GameMultiplayer : NetworkBehaviour
     public void StartClient()
     {
         OnTryingToJoin?.Invoke(this, EventArgs.Empty);
-        
-        NetworkManager.Singleton.ConnectionApprovalCallback += ConnectionApprovalCallback;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallBack;
         NetworkManager.Singleton.StartClient();
     }
