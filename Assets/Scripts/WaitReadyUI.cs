@@ -19,6 +19,7 @@ public class WaitReadyUI : MonoBehaviour
         readyButton.onClick.AddListener(() => { ReadyScript.Instance.SetPlayerReady(); });
         mainMenu.onClick.AddListener(() =>
         {
+            GameLobbyScript.Instance.LeaveLobby();
             NetworkManager.Singleton.Shutdown();
             Loader.Load(Loader.Scene.DenchikMainMenu);
         });

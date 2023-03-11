@@ -21,7 +21,7 @@ public class GameLobbyScript : MonoBehaviour
     public event EventHandler OnJoinFailed;
     public event EventHandler OnQuickJoinFailed;
     public event EventHandler EmptyCode;
-    public event EventHandler OnLobbyListChanged;
+    public event EventHandler<OnLobbyListChangedEventArgs> OnLobbyListChanged;
 
     public class OnLobbyListChangedEventArgs : EventArgs
     {
@@ -81,7 +81,7 @@ public class GameLobbyScript : MonoBehaviour
         }
     }
 
-    public async void JoinWithCode(string Code)
+    public async void JoinWithID(string Code)
     {
         OnJoinStarted?.Invoke(this, EventArgs.Empty);
         if (Code == "")
@@ -92,7 +92,7 @@ public class GameLobbyScript : MonoBehaviour
         {
             try
             {
-                joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(Code);
+                joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(Code);
                 GameMultiplayer.Instance.StartClient();
             }
             catch (LobbyServiceException e)
@@ -168,6 +168,7 @@ public class GameLobbyScript : MonoBehaviour
     private void Update()
     {
         HandleHeartBeat();
+        HandlePeriodListLobbies();
     }
 
     private void HandlePeriodListLobbies()
