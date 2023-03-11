@@ -2,8 +2,8 @@
 public class Barak : Building
 {
     // Скорость спавна солдат
-    public int SpawnRate { get; set; }
+    protected int spawnRate;
     
     // Кол-во солдат за один спавн
-    public int CountSoldersPerTime { get; set; }
+    protected int countSoldersPerTime;
 }

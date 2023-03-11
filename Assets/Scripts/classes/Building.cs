@@ -1,5 +1,4 @@
 // Базовый класс здания
-public class Building : Entity, IBuilding
+public class Building : Entity
 {
-    public int Size { get; set; }
 }
