@@ -7,13 +7,11 @@ using UnityEngine.UI;
 public class WaitingForOpponentUI : MonoBehaviour
 {
     [SerializeField] private Button readyButton;
-    [SerializeField] private GameObject waitingText;
 
     private void Awake()
     {
         readyButton.onClick.AddListener(() =>
         {
-            waitingText.SetActive(true);
             GameManager.Instance.OnInteractAction();
             readyButton.gameObject.SetActive(false);
         });

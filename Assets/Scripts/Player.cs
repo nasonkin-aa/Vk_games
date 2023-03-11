@@ -12,8 +12,7 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner)
             return;
-        if (GameManager.Instance.IsGamePlaying())
-            InputPlayer();
+        InputPlayer();
     }
     void InputPlayer()
     {

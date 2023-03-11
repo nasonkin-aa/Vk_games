@@ -14,6 +14,7 @@ public class LobbyUI : MonoBehaviour
         startHostBtn.onClick.AddListener(() =>
         {
             GameMultiplayer.Instance.StartHost();
+            Loader.LoadNetwork(Loader.Scene.DenchikReady);
         });
         startClientBtn.onClick.AddListener(() =>
         {

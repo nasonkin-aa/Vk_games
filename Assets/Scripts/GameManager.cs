@@ -83,7 +83,6 @@ public class GameManager : NetworkBehaviour
     private void Awake()
     {
         Instance = this;
-        state.Value = State.WaitingToStart;
         playerReadyDictionary = new Dictionary<ulong, bool>();
     }
 
