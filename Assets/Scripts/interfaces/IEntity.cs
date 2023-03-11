@@ -6,4 +6,6 @@ public interface IEntity
 
     // Имя сущности
     public string Name {get; set;}
+
+    public void Kill();
 }
