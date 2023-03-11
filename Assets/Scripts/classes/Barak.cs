@@ -1,4 +1,5 @@
-// Класс здания-генератора солдат
+// Класс здания-генератора солда
+using UnityEngine;
 public class Barak : Building
 {
     // Скорость спавна солдат
@@ -6,4 +7,10 @@ public class Barak : Building
     
     // Кол-во солдат за один спавн
     protected int countSoldersPerTime;
+    public GameObject solder;
+    public void SpawnSolders()
+    {
+        //Instantiate(solder,transform.);
+
+    }
 }
