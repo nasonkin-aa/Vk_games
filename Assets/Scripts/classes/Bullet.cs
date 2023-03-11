@@ -40,15 +40,13 @@ public class Bullet: MonoBehaviour
         print("гавно из жопы2");
         if (col.transform.GetComponent<Solder>() == null)
             return;
-        Destroy(transform.gameObject);
-        return;
         Entity entity = col.gameObject.GetComponent<Entity>();
 
         print(col.gameObject.Equals(_parent));
-
         //if (entity == null || col.gameObject.Equals(_parent)) return;
-
         entity.GetDamage(_damage);
+        
         Destroy(transform.gameObject);
+        return;
     }
 }

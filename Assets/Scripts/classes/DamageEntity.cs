@@ -10,7 +10,7 @@ public class DamageEntity: Entity
 
     private double _nextDamageTime;
 
-    protected void Attack(Entity entity)
+    public void Attack(Entity entity)
     {
         if (_nextDamageTime > Time.time) return;
         

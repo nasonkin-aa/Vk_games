@@ -190,3 +190,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDropedBuilding: 0
+  spawnTimer: 2
+  solder: {fileID: 1679759900813358630, guid: d9a10c9a9f81ab64998b85efae5c4b80, type: 3}

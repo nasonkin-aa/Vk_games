@@ -22,6 +22,7 @@ public class Grid : MonoBehaviour
                 GameObject newT = Instantiate(tile, vector3, Quaternion.identity, transform);
                 if (i > 2)
                     newT.GetComponent<Tile>().IsTileBlocked = true;
+                    newT.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
                 Matrix[i,j] = newT.GetComponent<Tile>();
             }
         

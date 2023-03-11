@@ -15,7 +15,7 @@ public class WaterTower : Tower
         if (col == null || col.GetComponent<Solder>() == null)
             return;
         if (_nextDamageTime > Time.time) return;
-
+       
         _nextDamageTime = Time.time + damageEntity.attackRate;
         var bull = Instantiate(bullet, transform.position, Quaternion.identity);
         bull.GetComponent<Bullet>().Init(gameObject, damageEntity.damage, col.transform.position);

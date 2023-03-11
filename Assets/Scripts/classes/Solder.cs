@@ -4,18 +4,18 @@ public class Solder: DamageEntity
 {
     // Скорость солдата
     protected int _speed = 10;
-
     // RigidBody объекта
     private Rigidbody2D _rigidbody;
     
     public void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        
     }
 
     public void Update()
     {
-        var tempVector = new Vector2(-1, 0).normalized * (_speed * Time.deltaTime);
+        var tempVector = new Vector2(1, 0).normalized * (_speed * Time.deltaTime);
         _rigidbody.MovePosition(_rigidbody.position + tempVector * 0.7f);
     }
 
