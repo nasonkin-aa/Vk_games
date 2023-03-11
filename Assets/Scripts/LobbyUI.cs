@@ -35,7 +35,7 @@ public class LobbyUI : MonoBehaviour
         });
         joinCodeBtn.onClick.AddListener(() =>
         {
-            GameLobbyScript.Instance.JoinWithID(joinCodeField.text);
+            GameLobbyScript.Instance.JoinWithCode(joinCodeField.text);
         });
         
         lobbyTemplate.gameObject.SetActive(false);
@@ -66,5 +66,10 @@ public class LobbyUI : MonoBehaviour
             lobbyTransform.gameObject.SetActive(true);
             lobbyTransform.GetComponent<LobbyListSingleUI>().SetLobby(lobby);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameLobbyScript.Instance.OnLobbyListChanged -= OnLobbyListChanged;
     }
 }

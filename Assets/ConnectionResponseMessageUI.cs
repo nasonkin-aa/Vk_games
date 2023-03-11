@@ -87,5 +87,12 @@ public class ConnectionResponseMessageUI : MonoBehaviour
     private void OnDestroy()
     {
         GameMultiplayer.Instance.OnFailedToJoin -= OnFailedToJoinGame;
+        GameLobbyScript.Instance.OnCreateLobbyStarted -= OnCreateLobbyStarted;
+        GameLobbyScript.Instance.OnCreateLobbyFailed -= OnCreateLobbyFailed;
+        GameLobbyScript.Instance.OnJoinFailed -= OnJoinFailed;
+        GameLobbyScript.Instance.OnJoinStarted -= OnJoinStarted;
+        GameLobbyScript.Instance.OnQuickJoinFailed -= OnQuickJoinFailed;
+        GameLobbyScript.Instance.EmptyCode -= EmptyCode;
+        
     }
 }
