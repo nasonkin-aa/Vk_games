@@ -15,7 +15,7 @@ public class Bullet: MonoBehaviour
     public void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        Destroy(transform.gameObject, 20);
+        //Destroy(transform.gameObject, 20);
     }
 
     public void Init(GameObject parent, int damage, Vector2 finalPos)
@@ -35,14 +35,18 @@ public class Bullet: MonoBehaviour
         
         _rigidbody.MovePosition(pos);
     }
-
-    public void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
+        print("гавно из жопы2");
+        if (col.transform.GetComponent<Solder>() == null)
+            return;
+        Destroy(transform.gameObject);
+        return;
         Entity entity = col.gameObject.GetComponent<Entity>();
-        
+
         print(col.gameObject.Equals(_parent));
-        
-        if (entity == null || col.gameObject.Equals(_parent)) return;
+
+        //if (entity == null || col.gameObject.Equals(_parent)) return;
 
         entity.GetDamage(_damage);
         Destroy(transform.gameObject);

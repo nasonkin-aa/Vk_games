@@ -15,8 +15,8 @@ public class Solder: DamageEntity
 
     public void Update()
     {
-        var tempVector = new Vector2(1, 0).normalized * (_speed * Time.deltaTime);
-        _rigidbody.MovePosition(_rigidbody.position + tempVector);
+        var tempVector = new Vector2(-1, 0).normalized * (_speed * Time.deltaTime);
+        _rigidbody.MovePosition(_rigidbody.position + tempVector * 0.7f);
     }
 
     public void OnCollisionStay2D(Collision2D col)
