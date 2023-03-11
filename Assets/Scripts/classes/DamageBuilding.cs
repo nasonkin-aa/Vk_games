@@ -1,10 +1,11 @@
 // Базовый класс атакующего здания
-public class DamageBuilding: DamageEntity, IBuilding
+public class DamageBuilding: Building
 {
-    public int Size { get; set; }
+    protected DamageEntity damageEntity;
 
     public DamageBuilding()
     {
-        Hp = 10;
+        hp = 10;
+        damageEntity = new DamageEntity();
     }
 }

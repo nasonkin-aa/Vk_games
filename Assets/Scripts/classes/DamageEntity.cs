@@ -1,26 +1,20 @@
 using UnityEngine;
 
-public class DamageEntity: Entity, IDamageEntity
+public class DamageEntity: Entity
 {
-    public int Damage { get; set; } = 1;
-    
-    public int AttackDistance { get; set; }
+    protected int damage = 1;
 
-    public int AttackRate { get; set; } = 1;
+    protected int attackDistance;
+
+    protected int attackRate = 1;
 
     private double _nextDamageTime;
     
-    public void Attack(IEntity entity)
+    protected void Attack(Entity entity)
     {
         if (_nextDamageTime > Time.time) return;
         
-        entity.Hp -= Damage;
-        _nextDamageTime = Time.time + AttackRate;
-        print(entity.Hp);
-
-        if (entity.Hp <= 0)
-        {
-            entity.Kill();
-        }
+        entity.GetDamage(damage);
+        _nextDamageTime = Time.time + attackRate;
     }
 }
