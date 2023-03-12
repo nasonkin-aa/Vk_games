@@ -9,13 +9,13 @@ public class Resurses : MonoBehaviour
 {
     public TMP_Text TextMoney;
     public static TMP_Text tex;
-    private static int _money = 1000;
+    private static int _money = BasePlayer.currPlayer.balance;
     public static int Money { 
         get => _money;
         set { 
             _money = value;
-            tex.text = value.ToString(); 
-
+            tex.text = value.ToString();
+            BasePlayer.currPlayer.balance = value;
         } 
     } 
     public void Start()

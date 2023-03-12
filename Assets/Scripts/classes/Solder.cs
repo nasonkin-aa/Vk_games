@@ -17,7 +17,8 @@ public class Solder: DamageEntity
     {
         if (IsCombat)
             return;
-        var tempVector = new Vector2(1, 0).normalized * (_speed * Time.deltaTime);
+        var vector = player.isReversed ? -1 : 1;
+        var tempVector = new Vector2(1, 0).normalized * (_speed * Time.deltaTime * vector);
         _rigidbody.MovePosition(_rigidbody.position + tempVector * 0.2f);
     }
 

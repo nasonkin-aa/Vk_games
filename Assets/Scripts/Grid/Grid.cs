@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Grid : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class Grid : MonoBehaviour
                     0);
 
                 GameObject newT = Instantiate(tile, vector3, Quaternion.identity, transform);
-                if (i > 2)
+                var isDisabledFields = BasePlayer.currPlayer.position == PlayerPosition.Right ? i < LengsHorizontal - 3 : i > 2;
+                
+                if (isDisabledFields)
                     newT.GetComponent<Tile>().IsTileBlocked = true;
                     newT.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
                 Matrix[i,j] = newT.GetComponent<Tile>();

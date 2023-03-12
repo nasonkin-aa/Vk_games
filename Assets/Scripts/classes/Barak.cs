@@ -10,7 +10,8 @@ public class Barak : Building
 
     public void SpawnSolders()
     {
-        Instantiate(solder,transform.position,Quaternion.identity);
+        var spawnPosMult = player.isReversed ? 1.1f : 0.9f;
+        Instantiate(solder,transform.position * spawnPosMult,Quaternion.identity);
     }
 
     public void FixedUpdate()
