@@ -35,7 +35,6 @@ public class Building : Entity
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        print("entre");
         if (collision.GetComponent<Tile>() != null)
         {
             transform.GetComponent<SpriteRenderer>().color = Color.white;

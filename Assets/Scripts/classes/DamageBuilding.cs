@@ -1,10 +1,25 @@
 // Базовый класс атакующего здания
+
+using UnityEngine;
+
 public class DamageBuilding: Building
 {
-    protected DamageEntity damageEntity;
+    public GameObject bulletPrefab;
+
+    private DamageEntity _damageEntity;
 
     public DamageBuilding()
     {
-        damageEntity = new DamageEntity();
+        _damageEntity = new DamageEntity();
+    }
+    
+    public void OnTriggerStay2D(Collider2D col)
+    {
+        if(!IsDropedBuilding)
+            return;
+        if (col == null || col.GetComponent<Solder>() == null)
+            return;
+       
+        _damageEntity.Attack(bulletPrefab, col.gameObject, transform.gameObject);
     }
 }

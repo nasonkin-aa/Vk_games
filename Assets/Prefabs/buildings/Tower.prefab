@@ -190,4 +190,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDropedBuilding: 0
-  bullet: {fileID: 5576248784882856271, guid: b8123a81abdaf427095916059428d201, type: 3}
+  bulletPrefab: {fileID: 5576248784882856271, guid: b8123a81abdaf427095916059428d201, type: 3}
