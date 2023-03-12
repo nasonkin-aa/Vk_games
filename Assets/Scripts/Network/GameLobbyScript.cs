@@ -289,7 +289,7 @@ public class GameLobbyScript : MonoBehaviour
             listLobbiesTimer -= Time.deltaTime;
             if (listLobbiesTimer <= 0f)
             {
-                float listLobbiesTimerMax = 3f;
+                float listLobbiesTimerMax = 9f;
                 listLobbiesTimer = listLobbiesTimerMax;
                 ListLobbies();
             }
