@@ -26,5 +26,10 @@ public class Player : NetworkBehaviour
         {
             gameObject.GetComponent<Rigidbody2D>().velocity =  new Vector2(0,0);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Loader.Load(Loader.Scene.DenchikMainMenu);
+        }
     }
 }
