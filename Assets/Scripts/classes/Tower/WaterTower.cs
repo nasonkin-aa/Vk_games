@@ -20,4 +20,8 @@ public class WaterTower : Tower
         var bull = Instantiate(bullet, transform.position, Quaternion.identity);
         bull.GetComponent<Bullet>().Init(gameObject, damageEntity.damage, col.transform.position);
     }
+    public override void ColliderOn()
+    {
+        //transform.GetComponent<CapsuleCollider2D>().enabled = true;
+    }
 }

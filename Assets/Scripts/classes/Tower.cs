@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Tower : DamageBuilding
 {
-  
+    public void Awake()
+    {
+        Cost = 70;
+    }
 }

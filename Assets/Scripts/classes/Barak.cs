@@ -13,16 +13,14 @@ public class Barak : Building
         Instantiate(solder,transform.position,Quaternion.identity,transform);
     }
 
-    public new void Update() 
+    public void FixedUpdate() 
     {   
-        base.Update();
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
         {
             SpawnSolders();
             spawnTimer = spawnRate;
         }
-
         
     }
 }

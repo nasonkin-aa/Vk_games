@@ -4,4 +4,20 @@ using UnityEngine;
 
 public class MonyMaker : Building
 {
+    private float _nextMoneyTime = 5;
+    private float _nextMoneyAmount = 5;
+    public void AddMoney()
+    {
+        Resurses.Money += 5;
+    }
+    public void FixedUpdate()
+    {
+        _nextMoneyTime -= Time.deltaTime;
+        if (_nextMoneyTime < 0)
+        {
+            AddMoney();
+            _nextMoneyTime = _nextMoneyAmount;
+        }
+        
+    }
 }

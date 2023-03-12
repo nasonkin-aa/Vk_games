@@ -5,14 +5,18 @@ public class Building : Entity
     public int Size { get; set; }
     public Collider2D Collider { get; set; }
     public bool IsDropedBuilding;
-/*    public void OnMouseDrag()
-    {
-        if (IsDropedBuilding) 
-            return; 
-        
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
-        print("Drag");
-    }*/
+    public int Cost = 70;
+
+    
+    /*    public void OnMouseDrag()
+        {
+            if (IsDropedBuilding) 
+                return; 
+
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
+            print("Drag");
+        }*/
+
     public void OnMouseUp()
     {
         if (IsDropedBuilding)
@@ -25,12 +29,16 @@ public class Building : Entity
                 Destroy(transform.gameObject);
                 return;
             }
+        transform.GetComponent<BoxCollider2D>().isTrigger = false;
+        //ColliderOn();
         transform.GetComponent<BoxCollider2D>().size = new Vector2(transform.localScale.x, transform.localScale.y);//
         transform.position = Collider.transform.position;//
         Collider.transform.GetComponent<Tile>().Building = transform.gameObject;
         Collider.transform.GetComponent<Tile>().IsTileBlocked = true;
         this.IsDropedBuilding = true;
-       
+        Resurses.Money -= Cost;
+
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +69,10 @@ public class Building : Entity
         {
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         }
+    }
+    public virtual void ColliderOn()
+    {
+        return;
     }
 
 }
