@@ -12,6 +12,8 @@ public class MonyMaker : Building
     }
     public void FixedUpdate()
     {
+        if (!IsDropedBuilding)
+            return;
         _nextMoneyTime -= Time.deltaTime;
         if (_nextMoneyTime < 0)
         {

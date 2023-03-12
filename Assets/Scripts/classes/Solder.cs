@@ -12,9 +12,7 @@ public class Solder: DamageEntity
     public void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        
     }
-
     public void FixedUpdate()
     {
         if (IsCombat)
@@ -23,12 +21,16 @@ public class Solder: DamageEntity
         _rigidbody.MovePosition(_rigidbody.position + tempVector * 0.2f);
     }
 
-    public void OnCollisionStay2D(Collision2D col)
+  
+    public void OnCollisionEnter2D(Collision2D col)
     {
-        var obj = col.gameObject.GetComponent<Entity>();
+        IsCombat = true;
+    }
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        var obj = collision.gameObject.GetComponent<Entity>();
         print(obj);
         if (obj == null) return;
-        IsCombat = true;
         Attack(obj);
     }
     public void OnCollisionExit2D(Collision2D collision)

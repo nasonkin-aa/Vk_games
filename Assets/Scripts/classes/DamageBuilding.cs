@@ -6,7 +6,7 @@ public class DamageBuilding: Building
 {
     public GameObject bulletPrefab;
 
-    public DamageEntity damageEntity;
+    protected DamageEntity damageEntity;
 
     public DamageBuilding()
     {

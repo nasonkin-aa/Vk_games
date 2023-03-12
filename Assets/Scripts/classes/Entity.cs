@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Entity: MonoBehaviour
+public abstract class Entity: MonoBehaviour
 {
     protected int hp = 10;
 
-    private void Death()
+    public virtual void Death()
     {
         Destroy(transform.gameObject);
     }

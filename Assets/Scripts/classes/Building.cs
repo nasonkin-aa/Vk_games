@@ -7,15 +7,14 @@ public class Building : Entity
     public bool IsDropedBuilding;
     public int Cost = 70;
 
-    
-    /*    public void OnMouseDrag()
-        {
-            if (IsDropedBuilding) 
-                return; 
+    public delegate void Handler();
+    public event Handler? TilsOnBlocked;
 
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
-            print("Drag");
-        }*/
+    public override void Death()
+    {
+        TilsOnBlocked?.Invoke();
+        Destroy(transform.gameObject);
+    }
 
     public void OnMouseUp()
     {
@@ -30,7 +29,7 @@ public class Building : Entity
                 return;
             }
         transform.GetComponent<BoxCollider2D>().isTrigger = false;
-
+        TilsOnBlocked += Collider.transform.GetComponent<Tile>().UnBlock;
         transform.GetComponent<BoxCollider2D>().size = new Vector2(transform.localScale.x, transform.localScale.y);//
         transform.position = Collider.transform.position;//
         Collider.transform.GetComponent<Tile>().Building = transform.gameObject;
@@ -75,6 +74,12 @@ public class Building : Entity
         {
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         }
+    }
+
+    public void FixedUpdate()
+    {
+        if (!IsDropedBuilding)
+            return;
     }
 
 }

@@ -10,11 +10,13 @@ public class Barak : Building
 
     public void SpawnSolders()
     {
-        Instantiate(solder,transform.position,Quaternion.identity,transform);
+        Instantiate(solder,transform.position,Quaternion.identity);
     }
 
-    public void FixedUpdate() 
-    {   
+    public void FixedUpdate()
+    {
+        if (!IsDropedBuilding)
+            return;
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0)
         {
