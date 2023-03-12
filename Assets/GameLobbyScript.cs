@@ -284,7 +284,7 @@ public class GameLobbyScript : MonoBehaviour
     private void HandlePeriodListLobbies()
     {
         if (joinedLobby == null && AuthenticationService.Instance.IsSignedIn && 
-            SceneManager.GetActiveScene().name == Loader.Scene.LoadingScene.ToString())
+            SceneManager.GetActiveScene().name == Loader.Scene.DenchikMenu.ToString())
         {
             listLobbiesTimer -= Time.deltaTime;
             if (listLobbiesTimer <= 0f)
