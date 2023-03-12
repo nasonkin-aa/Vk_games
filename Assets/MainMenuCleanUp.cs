@@ -21,5 +21,7 @@ public class MainMenuCleanUp : MonoBehaviour
         {
             Destroy(GameLobbyScript.Instance.gameObject);
         }
+
+        Time.timeScale = 1f;
     }
 }

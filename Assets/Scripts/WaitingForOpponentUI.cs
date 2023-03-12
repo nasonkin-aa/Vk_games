@@ -1,34 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WaitingForOpponentUI : MonoBehaviour
 {
-    [SerializeField] private Button readyButton;
+    [SerializeField] private Button mainMenu;
 
     private void Awake()
     {
-        readyButton.onClick.AddListener(() =>
+        mainMenu.onClick.AddListener(() =>
         {
-            GameManager.Instance.OnInteractAction();
-            readyButton.gameObject.SetActive(false);
+            Loader.Load(Loader.Scene.DenchikMainMenu);
         });
     }
 
     private void Start()
     {
-        GameManager.Instance.OnStateChanged += OnStateChanged;
-        Show();
+        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisonnectCallback;
+        Hide();
     }
 
-    private void OnStateChanged(object sender, System.EventArgs e)
+    private void OnClientDisonnectCallback(ulong clientId)
     {
-        if (GameManager.Instance.IsGamePlaying())
-        {
-            Hide();
-        }
+        Time.timeScale = 0f;
+        Show();
     }
 
     private void Show()
