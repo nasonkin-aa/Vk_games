@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageEntity: Entity
 {
-    public int damage = 1;
+    public int damage = 10;
 
     public int attackDistance = 1;
 
@@ -10,11 +10,26 @@ public class DamageEntity: Entity
 
     private double _nextDamageTime;
 
+    private bool IsAttackDisabled => _nextDamageTime > Time.time;
+
     public void Attack(Entity entity)
     {
-        if (_nextDamageTime > Time.time) return;
-        
+        if (IsAttackDisabled) return;
         entity.GetDamage(damage);
+        
+        _nextDamageTime = Time.time + attackRate;
+    }
+
+    public void Attack(GameObject bullet, GameObject targetEntity, GameObject parent)
+    {
+        if (IsAttackDisabled) return;
+
+        GameObject bulletInstance = Instantiate(bullet, parent.transform.position, Quaternion.identity);
+        bulletInstance.gameObject.GetComponent<Bullet>().Init(
+            parent, 
+            damage, 
+            targetEntity.transform.position);
+
         _nextDamageTime = Time.time + attackRate;
     }
 }

@@ -43,7 +43,6 @@ public class Building : Entity
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        print("entre");
         if (collision.GetComponent<Tile>() != null)
         {
             transform.GetComponent<SpriteRenderer>().color = Color.white;
@@ -62,6 +61,10 @@ public class Building : Entity
             Collider = null;  
         }
     }
+    public virtual void ColliderOn()
+    {
+        return;
+    }
 
     public void Update()
     {
@@ -69,10 +72,6 @@ public class Building : Entity
         {
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         }
-    }
-    public virtual void ColliderOn()
-    {
-        return;
     }
 
 }

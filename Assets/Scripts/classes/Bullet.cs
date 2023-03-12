@@ -37,12 +37,10 @@ public class Bullet: MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
-        print("гавно из жопы2");
         if (col.transform.GetComponent<Solder>() == null)
             return;
         Entity entity = col.gameObject.GetComponent<Entity>();
 
-        print(col.gameObject.Equals(_parent));
         //if (entity == null || col.gameObject.Equals(_parent)) return;
         entity.GetDamage(_damage);
         
