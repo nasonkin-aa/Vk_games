@@ -6,20 +6,25 @@ public class DamageBuilding: Building
 {
     public GameObject bulletPrefab;
 
-    private DamageEntity _damageEntity;
+    public DamageEntity damageEntity;
 
     public DamageBuilding()
     {
-        _damageEntity = new DamageEntity();
+        damageEntity = new DamageEntity();
     }
     
     public void OnTriggerStay2D(Collider2D col)
     {
         if(!IsDropedBuilding)
             return;
-        if (col == null || col.GetComponent<Solder>() == null)
+        if (col == null)
             return;
-       
-        _damageEntity.Attack(bulletPrefab, col.gameObject, transform.gameObject);
+        if (col.transform.GetComponent<Solder>() == null)
+            return;
+
+        print(bulletPrefab);
+        print(col.gameObject);
+        print(transform.gameObject);
+        damageEntity.Attack(bulletPrefab, col.gameObject, transform.gameObject);
     }
 }

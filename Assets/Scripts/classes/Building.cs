@@ -30,12 +30,13 @@ public class Building : Entity
                 return;
             }
         transform.GetComponent<BoxCollider2D>().isTrigger = false;
-        //ColliderOn();
+
         transform.GetComponent<BoxCollider2D>().size = new Vector2(transform.localScale.x, transform.localScale.y);//
         transform.position = Collider.transform.position;//
         Collider.transform.GetComponent<Tile>().Building = transform.gameObject;
         Collider.transform.GetComponent<Tile>().IsTileBlocked = true;
-        this.IsDropedBuilding = true;
+        IsDropedBuilding = true;
+        ColliderOn();
         Resurses.Money -= Cost;
 
 
@@ -43,6 +44,8 @@ public class Building : Entity
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (IsDropedBuilding)
+            return;
         if (collision.GetComponent<Tile>() != null)
         {
             transform.GetComponent<SpriteRenderer>().color = Color.white;
