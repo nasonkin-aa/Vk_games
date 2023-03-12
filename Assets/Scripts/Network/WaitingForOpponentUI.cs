@@ -13,6 +13,7 @@ public class WaitingForOpponentUI : MonoBehaviour
     {
         mainMenu.onClick.AddListener(() =>
         {
+            NetworkManager.Singleton.Shutdown();
             Loader.Load(Loader.Scene.DenchikMainMenu);
         });
     }
@@ -25,8 +26,8 @@ public class WaitingForOpponentUI : MonoBehaviour
 
     private void OnClientDisonnectCallback(ulong clientId)
     {
-        Time.timeScale = 0f;
         Show();
+        Time.timeScale = 0f;
     }
 
     private void Show()
