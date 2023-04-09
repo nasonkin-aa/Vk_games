@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4130323770063291748
 SpriteRenderer:
@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.066037714, g: 0.06254893, b: 0.06254893, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: fb0acd7c487482f4fa326466159ba03a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,9 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ae01889a8a4873920b3ac4ba76772a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPlayer: 1
   damage: 1
   attackDistance: 0
   attackRate: 1
+  Vertical: -1
+  dog: {fileID: 21300000, guid: a896b1dcca29ce64e94f7985f03be925, type: 3}
+  Rat: {fileID: 21300000, guid: 7808e19294ec77440b46b392343fb144, type: 3}
 --- !u!61 &5052589052936296118
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,21 +135,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.8257143, y: 1.1771429}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.82, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &4693314479809924552
 Rigidbody2D:
@@ -173,4 +177,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

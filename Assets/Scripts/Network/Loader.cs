@@ -9,10 +9,10 @@ public class Loader : MonoBehaviour
     public enum Scene
     {
         DenchikMainMenu,
-        DenchikMenu,
+        AndreyTest1,
         DenchikGame,
         DenchikReady,
-        LoadingScene,
+        DenchikMenu
     }
 
     private static Scene targetScene;

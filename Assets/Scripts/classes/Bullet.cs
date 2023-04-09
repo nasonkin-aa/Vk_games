@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet: MonoBehaviour
 {
-    private int _speed = 100;
+    private int _speed = 40;
 
     private GameObject _parent;
 
@@ -12,6 +12,7 @@ public class Bullet: MonoBehaviour
 
     private Vector2 _finalPos;
 
+    public bool isPlayer;
     public void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
@@ -20,6 +21,7 @@ public class Bullet: MonoBehaviour
 
     public void Init(GameObject parent, int damage, Vector2 finalPos)
     {
+        isPlayer = parent.GetComponent<Entity>().IsPlayer;
         _parent = parent;
         _damage = damage;
         _finalPos = finalPos;
@@ -40,11 +42,16 @@ public class Bullet: MonoBehaviour
         if (col.transform.GetComponent<Solder>() == null)
             return;
         Entity entity = col.gameObject.GetComponent<Entity>();
+        if (isPlayer && !entity.IsPlayer ||
+            !isPlayer && entity.IsPlayer)
+        {
+            entity.GetDamage(_damage);
+            Destroy(transform.gameObject);
+        }
 
         //if (entity == null || col.gameObject.Equals(_parent)) return;
-        entity.GetDamage(_damage);
-        
-        Destroy(transform.gameObject);
+
+        Destroy(transform.gameObject, 3f);
         return;
     }
 }

@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/DenchikMainMenu.unity
     guid: d92574f749897c544af050091add4731
   - enabled: 1
+    path: Assets/Scenes/AndreyTest1.unity
+    guid: 9db903516a4c35c4c931a404f6ff9481
+  - enabled: 0
     path: Assets/Scenes/DenchikMenu.unity
     guid: ba521435fc3e76a4abe2f9dcdf3d0418
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DenchikGame.unity
     guid: a4c8c1c00338d8445950818c8443c088
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DenchikReady.unity
     guid: 6674716aa38065842819d105d707bc8d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Scenes/DenchikMenu 1.unity
-    guid: 455e9e100e756e04f93c12e214673504
   m_configObjects: {}

@@ -21,6 +21,9 @@ public class DamageBuilding: Building
             return;
         if (col.transform.GetComponent<Solder>() == null)
             return;
+        if (gameObject.GetComponent<Entity>().IsPlayer && col.GetComponent<Entity>().IsPlayer ||
+            !gameObject.GetComponent<Entity>().IsPlayer && !col.GetComponent<Entity>().IsPlayer)
+            return;
 
         print(bulletPrefab);
         print(col.gameObject);

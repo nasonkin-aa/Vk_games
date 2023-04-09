@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageEntity: Entity
 {
-    public int damage = 10;
+    public int damage = 2;
 
     public int attackDistance = 1;
 
@@ -15,6 +15,9 @@ public class DamageEntity: Entity
     public void Attack(Entity entity)
     {
         if (IsAttackDisabled) return;
+        if (gameObject.GetComponent<Entity>().IsPlayer && entity.GetComponent<Entity>().IsPlayer ||
+            !gameObject.GetComponent<Entity>().IsPlayer && !entity.GetComponent<Entity>().IsPlayer)
+            return;
         entity.GetDamage(damage);
         
         _nextDamageTime = Time.time + attackRate;

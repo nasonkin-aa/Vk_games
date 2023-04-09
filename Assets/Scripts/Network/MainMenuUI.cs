@@ -6,18 +6,13 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button quitButton;
+    [SerializeField] private Button MainMenu;
 
     private void Awake()
     {
-        playButton.onClick.AddListener(() =>
+        MainMenu.onClick.AddListener(() =>
         {
-            Loader.Load(Loader.Scene.DenchikMenu);
-        });
-        quitButton.onClick.AddListener(() =>
-        {
-            Application.Quit();
+            Loader.Load(Loader.Scene.DenchikMainMenu);
         });
     }
 }

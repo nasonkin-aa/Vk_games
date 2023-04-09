@@ -9,7 +9,7 @@ public class Resurses : MonoBehaviour
 {
     public TMP_Text TextMoney;
     public static TMP_Text tex;
-    private static int _money = 1000;
+    private static int _money = 250;
     public static int Money { 
         get => _money;
         set { 

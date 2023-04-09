@@ -1,4 +1,6 @@
 // Базовый класс здания
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class Building : Entity
 {
@@ -28,12 +30,17 @@ public class Building : Entity
                 Destroy(transform.gameObject);
                 return;
             }
-        transform.GetComponent<BoxCollider2D>().isTrigger = false;
+        List<Collider2D> list = new List<Collider2D>(); 
+        Collider.OverlapCollider(new ContactFilter2D(),list);
+        if (list.Find(x => x.transform.GetComponent<Solder>() != null) != null)
+            return;
+        //transform.GetComponent<BoxCollider2D>().isTrigger = false;
         TilsOnBlocked += Collider.transform.GetComponent<Tile>().UnBlock;
         transform.GetComponent<BoxCollider2D>().size = new Vector2(transform.localScale.x, transform.localScale.y);//
         transform.position = Collider.transform.position;//
         Collider.transform.GetComponent<Tile>().Building = transform.gameObject;
         Collider.transform.GetComponent<Tile>().IsTileBlocked = true;
+        transform.gameObject.GetComponent<Entity>().IsPlayer = true;
         IsDropedBuilding = true;
         ColliderOn();
         Resurses.Money -= Cost;
